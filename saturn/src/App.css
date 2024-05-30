@@ -1,0 +1,106 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.margincenter{
+  margin-right: 45%;
+}
+.imgsize{
+  height:auto;
+  max-width: 100%;
+  max-height: auto;
+  display:block;
+  margin:auto;
+}
+.cartdetailimage{
+  height:100px;
+  width: auto;
+  max-height:auto;
+  max-width: 100%;
+  display:block;
+  overflow: hidden;
+  object-fit: cover;
+}
+.starcolor{
+  background-color: yellow;
+}
+.font_style{
+font-weight:100;
+font-size: xx-large;
+font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+.btn_style{
+  width: 50%;
+  max-width: 150%;
+}
+.qty_style1{
+  color:green;
+  font-size:30px;
+  font-weight:500;
+}
+.qty_style2{
+  color: red;
+  font-size:30px;
+  font-weight:500;
+}
+.cart_modal_imagesize{
+  height:auto;
+  max-width: 100%;
+  display: block;
+  max-height: auto;
+  margin:auto;
+}
+.msg{
+  padding-left: 50%;
+}
+.cstm_btn{
+  width:200px;
+}
+@media (max-width: 767px) {
+  .border-md-right {
+    border-right: none !important;
+  }
+}
+.cartimage{
+  height:170px;
+  width: auto;
+  max-height:auto;
+  max-width: 100%;
+  display:block;
+  overflow: hidden;
+  object-fit: cover;
+}
