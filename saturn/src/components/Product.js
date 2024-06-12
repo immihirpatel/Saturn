@@ -10,7 +10,6 @@ const Product = (props) => {
 
     return (
         <>
-           
             <div className='row my-4'>
                 {product.map((prd) => {
                     return <ProductItem key={prd._id} product={prd} />
