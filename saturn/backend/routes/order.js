@@ -8,26 +8,21 @@ const Product = require('../models/Product')
 const Cart = require('../models/Cart')
 
 //Place order: basically adding order details which contains authorized user details and product which he/she bought 
-router.post('/placeorder',fetchuser,fetchproduct,fetchcart, async(req,res)=>{
-    const {order_status,shipping_address,billing_address,payment_method,shipping_method,shipping_cost,tracking_number,payment_status,fullfillment_status,return_status} = req.body
-    const cart = req.cart.id
-    const productid = req.product.id
-    const product = await Product.findById(productid)
-    const cart_item = await Cart.findById(cart).populate('product')
-    const total = cart_item.product.price * cart_item.qty
+router.post('/placeorder',fetchuser, async(req,res)=>{
+    const {order_status,shipping_address,billing_address,payment_method,shipping_method,shipping_cost,tracking_number,payment_status,total_amount} = req.body
+    //const cart = req.cart.id
+    //const productid = req.product.id
+    //const product = await Product.findById(productid)
+   // const cart_item = await Cart.findById(cart).populate('product')
+    //const total = cart_item.product.price * cart_item.qty
     let order
-    if(!cart){
-    order = new Order({
-        total_amount:product.price,qty:product.qty,order_status,shipping_address,billing_address,payment_method,shipping_method,shipping_cost,tracking_number,payment_status,fullfillment_status,return_status,product:req.product.id,user:req.user.id
-    })
-    }
-    else {
+
         order = new Order({
-            total_amount:total,qty:cart_item.qty,order_status,shipping_address,billing_address,payment_method,shipping_method,shipping_cost,tracking_number,payment_status,fullfillment_status,return_status,product:cart_item.product.id,user:req.user.id
+            total_amount,order_status,shipping_address,billing_address,payment_method,shipping_method,payment_status,shipping_cost,tracking_number,user:req.user.id
         }) 
-    }
+    
     const saveorder = await order.save()
-    res.json(saveorder)
+    res.json(saveorder.id)
 })
 
 //Get order: Printing the details of order of authorized user

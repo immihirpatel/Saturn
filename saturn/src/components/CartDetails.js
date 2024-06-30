@@ -47,7 +47,7 @@ const CartDetails = () => {
       <div className='col-md-6 col-sm-12 my-4  d-flex flex-column align-items-center'>
           <p className='my-3' style={{fontSize:"x-large"}}>Cart Subtotal:{subtotal}$</p>
          <Link to="/checkout" state={cart} type="button" className="btn cstm_btn btn-dark">Proceed to Checkout</Link>
-       
+    
          <Link to="/cart" state={specificproduct} type="button" className="btn cstm_btn btn-outline-dark my-2">Go to Cart</Link>
           
       </div>

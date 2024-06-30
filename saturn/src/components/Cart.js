@@ -14,6 +14,7 @@ const Cart = () => {
  const state = {
   subtotal:subtotal,
   crt_qty: crt_qty,
+  cart_whl:cart
 };
   useEffect(() => {
     getCart()

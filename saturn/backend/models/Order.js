@@ -6,14 +6,6 @@ const orderschema = new Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:'user'
     },
-    product:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:'product'
-    },
-    cart:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:'cart'
-    },
     order_status:{
         type:String,
         required:true
@@ -34,10 +26,6 @@ const orderschema = new Schema({
         type:String,
         required:true
     },
-    qty:{
-        type:Number,
-        required:true
-    },
     total_amount: {
         type:Number,
         required:true
@@ -50,19 +38,11 @@ const orderschema = new Schema({
         type:Number,
         required:true
     },
-    tracking_number: {
-        type:String,
-        required:true
-    },
     payment_status: {
-        type:String,
-        required:true
+        type: String,
+        required: true
     },
-    fullfillment_status: {
-        type:String,
-        required:true
-    },
-    return_status: {
+    tracking_number: {
         type:String,
         required:true
     }
