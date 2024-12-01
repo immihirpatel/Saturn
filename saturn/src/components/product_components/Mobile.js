@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const Mobile = (props) => {
@@ -16,7 +16,21 @@ const Mobile = (props) => {
     {label:'Rear Camera', value:specificproduct.back_camera},
     {label:'Operating System', value:specificproduct.OS}
   ]
-
+  
+  const images = [
+    specificproduct?.product?.image && require(`C:/Users/mihir/OneDrive/Desktop/React - Projects/Saturn/saturn/backend/images/${specificproduct.product.image}`),
+    specificproduct?.product?.image1 && require(`C:/Users/mihir/OneDrive/Desktop/React - Projects/Saturn/saturn/backend/images/${specificproduct.product.image1}`),
+    specificproduct?.product?.image2 && require(`C:/Users/mihir/OneDrive/Desktop/React - Projects/Saturn/saturn/backend/images/${specificproduct.product.image2}`),
+    specificproduct?.product?.image3 && require(`C:/Users/mihir/OneDrive/Desktop/React - Projects/Saturn/saturn/backend/images/${specificproduct.product.image3}`)
+  ].filter(Boolean);
+  const [mainImage, setMainImage] = useState(images[0]);
+  
+  
+  
+  useEffect(()=>{
+    setMainImage(images[0])
+   
+  },[specificproduct?.product?._id])
 
   const handlevariantclick=(variant)=>{
     //e.preventDefault()
@@ -35,21 +49,33 @@ const Mobile = (props) => {
     const json = await response.json()
     setsubtotal(cart_total)
   }
+
   return (
    
-    <div className='container-xl' >
+    <div className='container-xl my-5' >
     <div className='row' >
       <div className='col-sm-4'>
-        <img src={specificproduct.product && require(`C:/Users/mihir/OneDrive/Desktop/React - Projects/Saturn/saturn/backend/images/${specificproduct.product.image}`)} alt="Loading..." className='imgsize' />
-      </div>
+      <img src={mainImage} alt="Loading..." className='imgsize' />
+      
+            {images.map((img, index) => (
+          <img
+          className='my-5'
+            key={index}
+            src={img}
+            //alt={`Thumbnail ${index}`}
+            style={{ width: '60px', height: '80px', margin: '0 5px', cursor: 'pointer' }}
+            onMouseEnter={() => setMainImage(img)}
+          />
+        ))}     
+             </div>
       <div className='col-sm-7'>
         <h3 className='font_style'>{specificproduct.product && specificproduct.product.title}</h3>
         <div>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-regular fa-star"></i>
+          <i className="fa-solid fa-star"></i>
+          <i className="fa-solid fa-star"></i>
+          <i className="fa-solid fa-star"></i>
+          <i className="fa-solid fa-star"></i>
+          <i className="fa-regular fa-star"></i>
         </div>
         <div className='my-2'>
           <span style={{ fontSize: "0.7em", display: "inline-block" }}>$</span>

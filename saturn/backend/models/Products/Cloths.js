@@ -20,8 +20,7 @@ const clothschema = new Schema({
         required:true
     },
     neck_style:{
-        type:String,
-        required:true
+        type:String
     },
     manufacturer:{
         type:String,

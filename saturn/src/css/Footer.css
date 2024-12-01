@@ -1,0 +1,67 @@
+/* src/components/Footer.css */
+
+.newsletter{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url("C:/Users/mihir/OneDrive/Desktop/React - Projects/Saturn/saturn/src/images_banners/footerbg.jpg");
+    background-repeat: no-repeat;
+   
+  }
+  
+  .news-box {
+    display: flex;
+    align-items: center;
+    margin-top: 2rem;
+  }
+
+  .footer{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px,auto));
+    gap:1rem;
+  }
+  
+  .footer-box h2{
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .footer-box p{
+    font-size: 00.938rem;
+    margin-bottom: 10px;
+  }
+  .social{
+    display: flex;
+    align-items: center;
+  }
+  .social Link{
+    font-size: 24px;
+    margin-right: 10px;
+  }
+  .footer-box h3{
+    font-weight:500;
+    margin-bottom: 10px;
+  }
+ .contact-info{
+    display: flex;
+    flex-direction: column;
+ }
+ .copyright{
+    padding: 20px;
+    text-align: center;
+ }
+
+ .footer-box li{
+    color: black;
+    list-style-type: none;
+ }
+
+ @media (max-width: 991px) {
+    header {
+      padding: 18px 4%;
+    }
+    section {
+      padding: 50px 4%;
+    }
+}

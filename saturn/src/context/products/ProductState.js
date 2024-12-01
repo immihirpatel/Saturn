@@ -89,6 +89,8 @@ const ProductState = (props) => {
  }
 
  
+
+ 
   return (
     <productContext.Provider value={{ product, getProduct, getSpecificproduct, specificproduct, getcategory, category,cart,getCart,deletecart,updatecart }}>
       {props.children}

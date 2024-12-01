@@ -1,0 +1,63 @@
+/* Position relative to the form */
+.position-relative {
+    position: relative;
+}
+
+.suggestion-box {
+    position: absolute;
+    top: 100%; /* Positions it just below the input field */
+    left: 40;
+    width: calc(100% - 700px); /* Adjust width to match the search bar, considering padding and margins */
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+    margin-top: 2px; 
+    text-overflow: ellipsis;
+}
+
+.suggestion-item {
+    padding: 10px;
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.suggestion-item:hover {
+    background-color: #f1f1f1;
+}
+
+@media (max-width: 576px) {
+    .suggestion-box {
+        width: 100%; /* Make sure it occupies the full width of the form */
+        left: 0;
+        right: 0;
+    }
+}
+
+.logo{
+    font-family: 'Poppins', sans-serif; /* Use a sleek, modern font */
+    font-size: 1.5rem; /* Large size for prominence */
+    font-weight: bold; /* Make it bold */
+    color: white; /* Brand-like color */
+    text-transform: uppercase; /* Uppercase for a bold statement */
+    letter-spacing: 0.1em; /* Slight spacing for a clean look */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    background: linear-gradient(90deg, white, gray); /* Gradient effect */
+    -webkit-background-clip: text; /* Clip the background to the text */
+    -webkit-text-fill-color: transparent; /* Make the background visible */
+    display: inline-block; /* Adjust for alignment */
+    padding: 10px 20px; /* Add some padding for space */
+   /* border: 2px solid white; /* Optional border */
+   /* border-radius: 8px; /* Rounded corners */
+    transition: all 0.3s ease; /* Smooth animations */
+}
+.logo:hover {
+    color: #00BFFF; /* Change color on hover */
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.4); /* Enhance shadow on hover */
+    transform: scale(1.1); /* Slight zoom effect */
+}

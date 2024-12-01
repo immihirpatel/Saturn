@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const Cloth = (props) => {
@@ -6,7 +6,7 @@ const Cloth = (props) => {
   let cart_total = 0
   cart_total = cart_total + (specificproduct.product && specificproduct.product.price)
   const [subtotal, setsubtotal] = useState(null)
-
+  //const [mainimage, setmainimage] = useState(specificproduct.product && require(`C:/Users/mihir/OneDrive/Desktop/React - Projects/Saturn/saturn/backend/images/${specificproduct.product.image}`))
   const details = [
     {label:'Size', value:specificproduct.size},
     {label:'Fabric Type', value:specificproduct.fabric_type},
@@ -16,6 +16,19 @@ const Cloth = (props) => {
     {label:'Color', value:specificproduct.color},
     {label:'Item Type', value:specificproduct.item_type}
   ]
+  console.log("Hello")
+  const images = [
+    specificproduct?.product?.image && require(`C:/Users/mihir/OneDrive/Desktop/React - Projects/Saturn/saturn/backend/images/${specificproduct.product.image}`),
+    specificproduct?.product?.image1 && require(`C:/Users/mihir/OneDrive/Desktop/React - Projects/Saturn/saturn/backend/images/${specificproduct.product.image1}`),
+    specificproduct?.product?.image2 && require(`C:/Users/mihir/OneDrive/Desktop/React - Projects/Saturn/saturn/backend/images/${specificproduct.product.image2}`),
+    specificproduct?.product?.image3 && require(`C:/Users/mihir/OneDrive/Desktop/React - Projects/Saturn/saturn/backend/images/${specificproduct.product.image3}`)
+  ].filter(Boolean);
+  const [mainImage, setMainImage] = useState(images[0]);
+
+  useEffect(()=>{
+    setMainImage(images[0])
+  },[specificproduct.product._id])
+  
   const handleclick = async() =>{
     const response = await fetch("http://localhost:5000/api/cart/addtocart",{
       method:"POST",
@@ -29,13 +42,24 @@ const Cloth = (props) => {
     const json = await response.json()
     setsubtotal(cart_total)
   }
+
   return (
    
-    <div className='container-xl'>
+    <div className='container-xl my-5'>
     <div className='row' >
       <div className='col-sm-4'>
-        <img src={specificproduct.product && require(`C:/Users/mihir/OneDrive/Desktop/React - Projects/Saturn/saturn/backend/images/${specificproduct.product.image}`)} alt="Loading..." className='imgsize' />
-      </div>
+        <img src={mainImage} alt="Loading..." className='imgsize' />
+        {images.map((img, index) => (
+          <img
+          className='my-5'
+            key={index}
+            src={img}
+            //alt={`Thumbnail ${index}`}
+            style={{ width: '60px', height: '80px', margin: '0 5px', cursor: 'pointer' }}
+            onMouseEnter={() => setMainImage(img)}
+          />
+        ))}
+       </div>
       <div className='col-sm-7'>
         <h3 className='font_style'>{specificproduct.product && specificproduct.product.title}</h3>
         <div>

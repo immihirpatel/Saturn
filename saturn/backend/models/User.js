@@ -13,10 +13,6 @@ const userschema = new Schema({
     password:{
         type:String,
         require:true
-    },
-    mnumber:{
-        type:String,
-        require:true
     }
 });
 const User = mongoose.model('user', userschema);

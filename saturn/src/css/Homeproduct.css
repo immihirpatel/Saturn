@@ -1,0 +1,19 @@
+.shop-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, auto));
+    gap:1rem;
+    margin-top: 2rem;
+}
+
+.heading{
+    text-align: center;
+}
+@media (max-width: 881px) {
+    .home-text h1 {
+      font-size: 2rem;
+    }
+    .shop-container,
+    .new-container {
+      grid-template-columns: repeat(auto-fit, minmax(218px, auto));
+    }
+  }

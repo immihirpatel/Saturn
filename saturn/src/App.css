@@ -104,3 +104,104 @@ font-family:Verdana, Geneva, Tahoma, sans-serif;
   overflow: hidden;
   object-fit: cover;
 }
+
+.full-width-banner {
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+.banner-img {
+  width: 100%;
+  height: 25vh;
+}
+
+/* For larger screens */
+@media (min-width: 768px) {
+  .banner-img {
+    height: 85vh;
+  }
+}
+  body {
+    margin: 0;
+    overflow-x: hidden;
+   
+  }
+section{
+  padding : 50px 10%; 
+}
+
+.home{
+  width: 100%;
+  min-height: 90vh;
+  background-image: url("C:/Users/mihir/OneDrive/Desktop/React - Projects/Saturn/saturn/src/images_banners/home banner.png");
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position: left;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+}
+
+.home-text{
+  position:absolute; /* Allows positioning relative to the nearest positioned ancestor */
+  right: 20px; /* Adjust this value to add some spacing from the right edge */
+  top: 50%; /* Centers the text vertically */
+  transform: translateY(-50%); /* Adjusts for the text height to perfectly center it vertically */
+  text-align: left; /* Aligns the text content to the right */
+}
+
+.home-text h1{
+  margin-left:auto;
+  font-size: 2.7rem;
+}
+
+.home-text p{
+  font-size: 0.938rem;
+  margin:0.4rem 0.1.8rem;
+}
+
+
+@media (max-width: 991px) {
+  header {
+    padding: 18px 4%;
+  }
+  section {
+    padding: 50px 4%;
+  }}
+
+@media(max-width:768px){
+  header{
+    padding:11px 4%;
+  }
+  #menu-icon{
+    display: initial;
+  }
+  .about{
+    grid-template-columns: 1fr;
+    text-align:center;
+  }
+  .about-img{
+    padding-top: 1rem;
+    order:2;
+  }
+}
+
+@media(max-width:491px){
+  .home-text h1{
+    font-size:1.7rem;
+  }
+  .shop-container,
+  .new-container{
+    grid-template-columns: repeat(auto-fit, minmax(200px, auto));
+  }
+  .box .box-img{
+    height:300px;
+  }
+}
+
+  

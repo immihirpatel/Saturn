@@ -32,7 +32,7 @@ const Television = (props) => {
   }
   
   return (
-      <div className='container-xl'>
+      <div className='container-xl my-5'>
         <div className='row' >
           <div className='col-sm-4'>
             <img src={specificproduct.product && require(`C:/Users/mihir/OneDrive/Desktop/React - Projects/Saturn/saturn/backend/images/${specificproduct.product.image}`)} alt="Loading..." className='imgsize' />

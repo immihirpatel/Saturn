@@ -23,6 +23,15 @@ const productschema = new Schema({
         type:String,
         required:true
     },
+    image1:{
+        type:String
+    },
+    image2:{
+        type:String
+    },
+    image3:{
+        type:String
+    },
     category:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'category'

@@ -43,11 +43,30 @@ router.post('/addproduct',upload.single('image'),async (req,res)=>{
         price:req.body.price,
         qty:req.body.qty,
         image:req.file.filename,
+        image1:req.file.filename,
+        image2:req.file.filename,
+        image3:req.file.filename,
         category:req.body.category_id,
         subcategory:req.body.subcategory_id
     })
     await product.save()
     res.send(product)
+})
+router.post('/updateproduct/:id',upload.array('images',3), async(req,res)=>{
+    const images = req.files;
+    if (images && images.length >= 3) {
+        const image1 = images[0].filename;
+        const image2 = images[1].filename;
+        const image3 = images[2].filename;
+
+        let product = await Product.findByIdAndUpdate(req.params.id, {
+            $set: { image1: image1, image2: image2, image3: image3 }
+        }, { new: true });
+
+        res.json(product);
+    } else {
+        res.status(400).json({ error: "Please upload 3 images." });
+    }
 })
 // to add a cloths TODO: make a mid
 router.post('/addcloths',async (req,res)=>{

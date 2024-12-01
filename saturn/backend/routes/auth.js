@@ -11,8 +11,7 @@ const fetchuser = require('../middleware/fetchuser')
 //Creating a user using POST method.....doesn't require authentication
 router.post('/createuser', [body('name', 'Name should not be empty').notEmpty(),
 body('email', 'Enter Valid email').isEmail(),
-body('password', 'Password must be 5 charaters long').isLength({ min: 5 }),
-body('mnumber', 'Password must be 5 charaters long').isLength({ min: 5 })], async (req, res) => {
+body('password', 'Password must be 5 charaters long').isLength({ min: 5 })], async (req, res) => {
 
     const result = validationResult(req)
     if (!result.isEmpty()) {
@@ -29,8 +28,7 @@ body('mnumber', 'Password must be 5 charaters long').isLength({ min: 5 })], asyn
         user = await User.create({
             name: req.body.name,
             email: req.body.email,
-            password: secPass,
-            mnumber: req.body.mnumber
+            password: secPass
         })
 
         const data = {
@@ -39,7 +37,7 @@ body('mnumber', 'Password must be 5 charaters long').isLength({ min: 5 })], asyn
             }
         }
         const authtoken = await jwt.sign(data, JWT_SECRET)
-        res.json({ authtoken })
+        res.json({success:true,authtoken})
     }
     catch (error) {
         console.error(error.message)
@@ -61,14 +59,14 @@ router.post('/login', async(req,res)=>{
         }
     }
     const authtoken = await jwt.sign(data,JWT_SECRET)
-    res.json({authtoken})
+    res.json({success:true, authtoken})
 })
 
 router.post('/getuser',fetchuser, async(req,res)=>{
     userId = req.user.id
     try{
     const user = await User.findById(userId).select('-password')
-    res.send({user})
+    res.send(user)
     }
     catch(error){
         console.error(error.message)
