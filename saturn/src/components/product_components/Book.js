@@ -7,7 +7,8 @@ const Book = (props) => {
   let cart_total = 0
   cart_total = cart_total + (specificproduct.product && specificproduct.product.price)
   const [subtotal, setsubtotal] = useState(null)
-
+  const [userid,Setuserid] = useState(null);
+  const authtoken = localStorage.getItem("token")
   const details = [
     {label:'Release Date', value:specificproduct.release_date},
     {label:'Publisher Name', value:specificproduct.publisher_name},
@@ -25,14 +26,15 @@ const Book = (props) => {
 
   useEffect(()=>{
     setMainImage(images[0])
-  },[specificproduct.product._id])
-
+  },[specificproduct.product && specificproduct.product._id])
+  
+  
   const handleclick = async() =>{
     const response = await fetch("http://localhost:5000/api/cart/addtocart",{
       method:"POST",
       headers:{
         "content-type":"application/json",
-        "auth-token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjU4MGJlOTc4NjRkYjUzMTI0NTMwMGFlIn0sImlhdCI6MTcwMjkzODAyOH0.X6-jB8n5KmKDxbYICsoKPhzzlXdeAxAB_JZ8z0i7aZY",
+        "auth-token":authtoken,
         "productid":specificproduct.product && specificproduct.product._id
       },
       body: JSON.stringify({total:cart_total})

@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import productContext from '../context/products/ProductContext'
+import {loadStripe} from '@stripe/stripe-js';
+
 const Cart = () => {
   const context = useContext(productContext)
   const { getCart, cart, deletecart,updatecart } = context
@@ -10,6 +12,7 @@ const Cart = () => {
   const [crt_qty, setcrt_qty] = useState(JSON.parse(localStorage.getItem('crt_qty'))||{});
   const [amt, setamt] = useState(JSON.parse(localStorage.getItem('amt'))||{});
   const [subtotal, setsubtotal] = useState()
+  
  // const [cartitem, setcartitem] = useState(JSON.parse(localStorage.getItem('cartitem'))||{})
  const state = {
   subtotal:subtotal,
@@ -55,7 +58,28 @@ const Cart = () => {
     setamt({...amt,[index]:newtotal});
   }
 }
-
+//makePayment function is using stripe module for payment integration 
+const makePayment = async() => {
+  const stripe = await loadStripe("pk_test_51QS3fkRpvZEOPvzhQRhJ0U70nn0omeiVnlDl0yUv6RRpaietIszWn7d4MMUj1G3gg4QZzbv6XJpIVPdTZPxseUNH00tQPsYzb2")
+  const body = {
+    products:cart
+  }
+  const response = await fetch ('http://localhost:5000/api/order/create-checkout-session',{
+    method:"POST",
+      headers:{
+        "content-type":"application/json"
+      },
+      body: JSON.stringify(body)
+  })
+  const session = await response.json();
+  const result = stripe.redirectToCheckout({
+    sessionId:session.id
+  })
+  console.log(session)
+  if(result.error){
+    console.log(result.error)
+  }
+}
 
 
   const handleplus=async(index,id,prdid,price,qty,total)=>{
@@ -106,7 +130,7 @@ const Cart = () => {
           ))}
         
         </div>
-        <div className='d-flex justify-content-end my-2'><Link to="/checkout" state={state} className="btn btn-dark">Proceed To Checkout ${subtotal}</Link></div>
+        <div className='d-flex justify-content-end my-2'><Link  state={state} onClick={makePayment} className="btn btn-dark">Proceed To Checkout ${subtotal}</Link></div>
       </div>
     </>
   )

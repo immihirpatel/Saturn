@@ -6,13 +6,13 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
     return (
         <>
-        <section className="newsletter" id="contact">
+        {/* <section className="newsletter" id="contact">
       <h2>Subscribe to Newsletter</h2>
       <div className='news-box'>
         <input type="email" className="form-control" placeholder="Enter your email...."/>
         <Link to="/" class="btn btn-dark">Subscribe</Link>
       </div>
-    </section>
+    </section> */}
    <section className='footer' id="footer">
         <div className='footer-box'>
             <h2>Saturn</h2>
@@ -44,8 +44,10 @@ const Footer = () => {
             <span>mihir@saturn.com</span>
             
         </div>
-   </section> 
-   <div class="copyright">
+   
+
+    </section> 
+    <div class="copyright">
         <p>&#169; Saturn 2024 All Right Reserved.</p>
     </div>
     </>

@@ -12,7 +12,7 @@ const ProductState = (props) => {
   const [category, setcategory] = useState(null)
 
   const [cart, setcart] = useState([])
-
+  const authtoken = localStorage.getItem("token")
   const getProduct = async () => {
   
     const response = await fetch(`${host}/api/product/getproduct`, {
@@ -42,7 +42,7 @@ const ProductState = (props) => {
     const response = await fetch(`${host}/api/cart/viewcart`,{
       method:"POST",
       headers:{
-        "auth-token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjU4MGJlOTc4NjRkYjUzMTI0NTMwMGFlIn0sImlhdCI6MTcwMjkzODAyOH0.X6-jB8n5KmKDxbYICsoKPhzzlXdeAxAB_JZ8z0i7aZY"
+        "auth-token":authtoken
       }
     });
     const json = await response.json()

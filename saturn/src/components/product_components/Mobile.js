@@ -7,6 +7,7 @@ const Mobile = (props) => {
   let cart_total = 0
   cart_total = cart_total + (specificproduct.product && specificproduct.product.price)
   const [subtotal, setsubtotal] = useState(null)
+  const authtoken = localStorage.getItem("token")
   const details = [
     {label:'Brand', value:specificproduct.brand_name},
     {label:'Model', value:specificproduct.model_name},
@@ -41,7 +42,7 @@ const Mobile = (props) => {
       method:"POST",
       headers:{
         "content-type":"application/json",
-        "auth-token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjU4MGJlOTc4NjRkYjUzMTI0NTMwMGFlIn0sImlhdCI6MTcwMjkzODAyOH0.X6-jB8n5KmKDxbYICsoKPhzzlXdeAxAB_JZ8z0i7aZY",
+        "auth-token":authtoken,
         "productid":specificproduct.product && specificproduct.product._id
       },
       body: JSON.stringify({total:cart_total})

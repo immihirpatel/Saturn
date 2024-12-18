@@ -69,6 +69,8 @@ const Navbar = (props) => {
 
     const handleLogout = () =>{
         localStorage.removeItem("token");
+        localStorage.removeItem('crt_qty');
+        localStorage.removeItem('amt');
         setUserName(null);
     }
 
@@ -87,8 +89,20 @@ const Navbar = (props) => {
                             </button>
                             <span className='logo' style={{marginLeft:"10px"}}>Saturn</span>
                         </div>
-                        <div className='d-lg-none ms-auto d-flex align-items-center' style={{ marginLeft: "50%" }}>
-                            <Link style={{ color: "white", marginRight: "15px" }} to="/cart"> <i className="fa-regular fa-user fa-2xl" style={{ color: "#ffffff;" }}></i></Link>
+                    {/*User and Cart */}
+                        <div className='d-lg-none ms-auto d-flex align-items-center justify-content-end'>
+                            {userName?(
+                            <div className='dropdown'>
+                            <span style={{ color: "white", marginRight: "10px", cursor:"pointer" }}
+                            onClick={()=>{setShowDropdown(!showDropdown)}}>
+                                Hello, {userName}
+                            </span>
+                            {showDropdown && (
+                                    <div className='dropdown-menu show'>
+                                        <button className='dropdown-item' onClick={handleLogout}>Logout</button>
+                                    </div>)
+                            }</div>):
+                            (<Link style={{ color: "white", marginRight: "15px" }} to="/login"> <i className="fa-regular fa-user fa-2xl" style={{ color: "#ffffff;" }}></i></Link>)}
                             <Link style={{ color: "white" }} to="/cart"><i className="fa-solid fa-cart-shopping fa-2xl" style={{ color: "#121212;" }}></i></Link>
                         </div>
                     </div>

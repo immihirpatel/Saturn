@@ -6,6 +6,7 @@ const fetchproduct = require('../middleware/fetchproduct')
 const fetchcart = require('../middleware/fetchcart')
 const Product = require('../models/Product')
 const Cart = require('../models/Cart')
+const stripe = require("stripe")("sk_test_51QS3fkRpvZEOPvzh8f23kYq6bY0oEMXmaWKEJ4i7ToqaBH8xiDXAUJ7xM82SKbPOiZVLzPiFn3UAJEuHwceRkyJJ00zXmNZYoE")
 
 //Place order: basically adding order details which contains authorized user details and product which he/she bought 
 router.post('/placeorder',fetchuser, async(req,res)=>{
@@ -49,5 +50,50 @@ router.post('/updateorder/:id', async(req,res)=>{
 router.post('/deleteorder/:id',async(req,res)=>{
     const order = await Order.findByIdAndDelete(req.params.id)
     res.json("Order deleted successfully")
+})
+
+
+//create checkout session for stripe
+router.post('/create-checkout-session',async(req,res)=>{
+    const {products} = req.body;
+    const lineItems = products.map((product)=>({
+        price_data:{
+            currency:"cad",
+            product_data:{
+                name:product.product.title
+            },
+            unit_amount:Math.round(Number(product.total) * 100)
+        },
+        quantity:product.qty
+    }))
+
+    const session = await stripe.checkout.sessions.create({
+        payment_method_types:["card"],
+        line_items:lineItems,
+        mode:"payment",
+        success_url:"http://localhost:8080/success",
+        cancel_url:"http://localhost:8080/cancel"
+    })
+    // const lineItems = products.map((product)=>({
+    //     price_data:{
+    //         currency:"cad",
+    //         product_data:{
+    //             name:product.product.name
+    //         },
+    //         unit_amount:product.product.price
+    //     },
+    //     quantity:product.qty
+    // }));
+    
+    // const session = await stripe.checkout.sessions.create({
+    //     payment_method_type:["card"],
+    //     line_items:lineItems,
+    //     mode:"payment",
+    //     success_url:"http://localhost:8080/success",
+    //     cancel_url:"http://localhost:8080/cancel"
+    // })
+
+    res.json({id:session.id})
+    // console.log(session)
 })
 module.exports = router

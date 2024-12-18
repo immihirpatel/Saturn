@@ -61,3 +61,54 @@
     text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.4); /* Enhance shadow on hover */
     transform: scale(1.1); /* Slight zoom effect */
 }
+
+.dropdown-menu {
+    position: absolute;
+    top: 40px;
+    right: 0; /* Align to the right of the trigger */
+    width: auto; /* Auto size */
+    max-width: 90%; /* Ensure it doesn't overflow screen */
+    background-color: white; /* Ensure visibility */
+    border: 1px solid #ccc; /* Optional: Add border for clarity */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Optional: Add shadow */
+    z-index: 1050;
+    margin-left: auto;
+}
+
+@media (max-width: 576px) { /* For small screens */
+    .dropdown-menu {
+        width: 100%; /* Use full width */
+        left: 0; /* Ensure alignment */
+        border: radius 5px;; /* Optional: Remove border-radius for fullscreen look */
+    }
+}
+
+@media(max-width: 576px){
+    .container-fluid{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .navbar-toggler{
+        margin-right: 0;
+        
+    }
+    .logo{
+        font-size: 1.2rem;
+        margin-left: 0;
+        padding-left: 0;
+        flex: 1;
+    }
+    .navbar .ms-auto{
+        display: flex;
+        align-items: center;
+    }
+    .dropdown-menu{
+        width: 100%;
+        left: 0;
+        border-radius: 0;
+    }
+    .navbar-toggler-icon{
+        font-size: 1.5rem;
+    }
+}

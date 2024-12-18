@@ -17,6 +17,8 @@ import Searchresult from './components/Searchresult';
 import Login from './components/Login';
 import Alert from './components/Alert';
 import { useState } from 'react';
+import Cancel from './components/Cancel';
+import Success from './components/Success';
 
 function App() {
   const [alert, setAlert] = useState(null);
@@ -49,6 +51,8 @@ function App() {
         <Route exact path="/checkout" element={<Checkout/>} />
         <Route exact path="/searchresult" element={<Searchresult/>} />
         <Route exact path="/login" element={<Login  showAlert={showAlert}/>} />
+        <Route exact path="/success" element={<Success/>} />
+        <Route exact path="/cancel" element={<Cancel/>} />
       </Routes>
     </div>
     <Footer/>
