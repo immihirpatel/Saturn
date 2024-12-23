@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
+
 const Cloth = (props) => {
   const {specificproduct}=props
   let cart_total = 0
