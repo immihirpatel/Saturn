@@ -37,7 +37,7 @@ const CartDetails = () => {
   return (
     <div className="row my-5 d-flex justify-content-center">
       <div className='col-md-6 my-5 col-sm-12 d-flex flex-column align-items-center border-md-right border-sm-0' style={{borderRight:"1px solid black"}}  >
-      <img src={specificproduct.product && require(`C:/Users/mihir/OneDrive/Desktop/React - Projects/Saturn/saturn/backend/images/${specificproduct.product.image}`)} alt="Loading..." className='cartdetailimage img-fluid' />
+      <img src={specificproduct.product && require(`C:/Users/mihir/OneDrive/Desktop/React - Projects/Saturn/saturn/public/images/${specificproduct.product.image}`)} alt="Loading..." className='cartdetailimage img-fluid' />
       <p className='text-center' style={{fontSize:"x-large"}}>
         <i className="fa-solid fa-circle-check my-2" style={{color: "#286520"}}></i>
          &nbsp; Added to Cart

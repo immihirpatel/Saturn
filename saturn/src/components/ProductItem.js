@@ -11,7 +11,7 @@ const ProductItem = (props) => {
 
     <div className='box'>
         <div className='box-img'>
-        <Link to={`/productdetail/${product._id}`}> <img  src={product.image && require(`C:/Users/mihir/OneDrive/Desktop/React - Projects/Saturn/saturn/backend/images/${product.image}`)} className="card-img-top my-3" alt={productimage} />
+        <Link to={`/productdetail/${product._id}`}> <img  src={product.image && require(`C:/Users/mihir/OneDrive/Desktop/React - Projects/Saturn/saturn/public/images/${product.image}`)} className="card-img-top my-3" alt={productimage} />
         </Link>
         </div>
         <div className='title-price'>
