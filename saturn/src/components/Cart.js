@@ -115,7 +115,7 @@ const makePayment = async() => {
           {Array.isArray(cart) && cart.map((crt, index) => (
             <div className='row' key={index}>
               <div className='col-md-5 col-sm-12 d-flex flex-column align-items-center my-3'>
-                <img src={crt.product && require(`C:/Users/mihir/OneDrive/Desktop/React - Projects/Saturn/saturn/public/images/${crt && crt.product.image}`)} alt="Loading..." className='cartimage img-fluid' />
+                <img src={crt.product && require(`${process.env.REACT_APP_PATHOFIMAGES}/${crt && crt.product.image}`)} alt="Loading..." className='cartimage img-fluid' />
               </div>
               <div className='col-md-7  my-3'>
                 {crt && crt.product.title} <br />

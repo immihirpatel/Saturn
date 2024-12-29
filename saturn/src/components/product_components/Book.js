@@ -16,11 +16,12 @@ const Book = (props) => {
     {label:'Item Weight', value:specificproduct.item_weight},
     {label:'Language', value:specificproduct.language}
   ]
+ 
   const images = [
-    specificproduct?.product?.image && require(`C:/Users/mihir/OneDrive/Desktop/React - Projects/Saturn/saturn/public/images/${specificproduct.product.image}`),
-    specificproduct?.product?.image1 && require(`C:/Users/mihir/OneDrive/Desktop/React - Projects/Saturn/saturn/public/images/${specificproduct.product.image1}`),
-    specificproduct?.product?.image2 && require(`C:/Users/mihir/OneDrive/Desktop/React - Projects/Saturn/saturn/public/images/${specificproduct.product.image2}`),
-    specificproduct?.product?.image3 && require(`C:/Users/mihir/OneDrive/Desktop/React - Projects/Saturn/saturn/public/images/${specificproduct.product.image3}`)
+    specificproduct?.product?.image && require(`${process.env.REACT_APP_PATHOFIMAGES}/${specificproduct.product.image}`),
+    specificproduct?.product?.image1 && require(`${process.env.REACT_APP_PATHOFIMAGES}/${specificproduct.product.image1}`),
+    specificproduct?.product?.image2 && require(`${process.env.REACT_APP_PATHOFIMAGES}/${specificproduct.product.image2}`),
+    specificproduct?.product?.image3 && require(`${process.env.REACT_APP_PATHOFIMAGES}/${specificproduct.product.image3}`)
   ].filter(Boolean);
   const [mainImage, setMainImage] = useState(images[0]);
 

@@ -32,7 +32,7 @@ const Watch = (props) => {
     <div className='container-xl my-5'>
     <div className='row' >
       <div className='col-sm-4'>
-        <img src={specificproduct.product && require(`C:/Users/mihir/OneDrive/Desktop/React - Projects/Saturn/saturn/public/images/${specificproduct.product.image}`)} alt="Loading..." className='imgsize' />
+        <img src={specificproduct.product && require(`${process.env.REACT_APP_PATHOFIMAGES}/${specificproduct.product.image}`)} alt="Loading..." className='imgsize' />
       </div>
       <div className='col-sm-7'>
         <h3 className='font_style'>{specificproduct.product && specificproduct.product.title}</h3>

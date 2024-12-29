@@ -11,7 +11,7 @@ const Searchresult = () => {
     {filterproducts.map((prd, index) => (
     <div className="card mx-3 my-2"  style={{width: "18rem"}}>
 
-    <Link to={`/productdetail/${prd._id}`}> <img  src={prd.image && require(`C:/Users/mihir/OneDrive/Desktop/React - Projects/Saturn/saturn/public/images/${prd.image}`)} className="card-img-top my-3"  />
+    <Link to={`/productdetail/${prd._id}`}> <img  src={prd.image && require(`${process.env.REACT_APP_PATHOFIMAGES}/${prd.image}`)} className="card-img-top my-3"  />
     </Link>
      <div class="card-body">
          <h5 class="card-title">{prd.title}</h5>
