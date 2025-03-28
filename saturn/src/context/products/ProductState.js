@@ -3,7 +3,7 @@ import { useState } from "react";
 import React from 'react'
 
 const ProductState = (props) => {
-  const host = "http://localhost:5000"
+  const host = "https://saturn-backend-rg79.onrender.com"
   const productInitial = []
   const specificProd = []
   //const cartInitial = []
