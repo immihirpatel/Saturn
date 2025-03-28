@@ -5,7 +5,7 @@ import React from 'react'
 
 
 const UserState = (props) => {
-    const host = "http://localhost:5000"
+    const host = "https://saturn-backend-rg79.onrender.com"
     const userInitial = []
     const [user,setUser] = useState(userInitial);
     const getUser = async () => {
