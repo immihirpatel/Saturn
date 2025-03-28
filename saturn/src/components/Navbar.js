@@ -35,9 +35,9 @@ const Navbar = (props) => {
                 }
               });
               const json = await response.json();
-              console.log("Fetched user data:", json);
+              
               setUserName(json.name)
-              console.log(json.name)
+             
         }catch(error){
             console.error("Error fetching user data", error)
         }

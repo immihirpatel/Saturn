@@ -80,7 +80,7 @@ const Cloth = (props) => {
         <div>
         
         </div>
-        <div className='container d-flex'><button type="button" className="btn btn-dark btn_style ">Buy Now</button>
+        <div className='container d-flex'><Link to="/cartdetail" state={specificproduct} onClick={handleclick}  className="btn btn-dark btn_style ">Buy Now</Link>
         <Link to="/cartdetail" state={specificproduct} onClick={handleclick} className="btn btn-dark btn-block btn_style mx-2" >Add to Cart</Link>
         </div>
      

@@ -1,12 +1,19 @@
+
+
 const connectToMongo = require('./db')
 const express = require('express')
 var cors = require('cors')
+const path = require('path')
 connectToMongo()
+
+
 
 const app = express()
 app.use(cors())
-const port = 5000
+const port = process.env.PORT || 5000;
+
 app.use(express.json())
+app.use(express.static(path.join(__dirname,'./build')))
 
 app.use('/api/auth',require('./routes/auth'))
 app.use('/api/product',require('./routes/product'))
@@ -17,6 +24,9 @@ app.use('/api/card',require('./routes/card'))
 app.use('/api/orderdetails',require('./routes/orderdetails'))
 
 
+app.use('*', function(req,res){
+res.sendFile(path.join(__dirname,'./build/index.html'));
+})
 //app.use('/api/book',require('./routes/product'))
 //app.use('/api/cloth',require('./routes/product'))
 //app.use('/api/cosmetic',require('./routes/product'))
